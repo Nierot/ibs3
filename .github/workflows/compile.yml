@@ -1,0 +1,33 @@
+name: Build and push to gh packages
+
+on:
+  push:
+    branches:
+      - "main"
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          # Now we tag it repo_owner/repo_name:tag_name
+          # with tag name being the release tag if the event is a release
+          # otherwise it will be branch_name-commit_sha
+          # if the event is not a release, then only do the sha tag
+          tags: |
+            ${{ github.repository_owner }}/${{ github.repository }}:${{ github.event.release.tag_name }}
+            ${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
