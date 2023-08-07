@@ -1,9 +1,6 @@
 name: Build and push to gh packages
 
 on:
-  push:
-    branches:
-      - "main"
   release:
     types: [published]
 
@@ -30,4 +27,3 @@ jobs:
           # if the event is not a release, then only do the sha tag
           tags: |
             ${{ github.repository }}:${{ github.event.release.tag_name }}
-            ${{ github.repository }}:${{ github.sha }}
