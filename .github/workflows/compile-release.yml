@@ -33,5 +33,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # Now we tag it with the release tag
+          tags: nierot/ibs3:${{ github.event.release.tag_name }}
