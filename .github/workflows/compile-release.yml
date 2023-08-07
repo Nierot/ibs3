@@ -34,4 +34,4 @@ jobs:
           context: .
           push: true
           # Now we tag it with the release tag
-          tags: nierot/ibs3:${{ github.event.release.tag_name }}
+          tags: ghcr.io/nierot/ibs3:${{ github.event.release.tag_name }}
