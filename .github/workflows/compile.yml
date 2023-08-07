@@ -29,5 +29,5 @@ jobs:
           # otherwise it will be branch_name-commit_sha
           # if the event is not a release, then only do the sha tag
           tags: |
-            ${{ github.repository_owner }}/${{ github.repository }}:${{ github.event.release.tag_name }}
-            ${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+            ${{ github.repository }}:${{ github.event.release.tag_name }}
+            ${{ github.repository }}:${{ github.sha }}
