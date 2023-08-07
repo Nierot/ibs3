@@ -21,9 +21,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          # Now we tag it repo_owner/repo_name:tag_name
-          # with tag name being the release tag if the event is a release
-          # otherwise it will be branch_name-commit_sha
-          # if the event is not a release, then only do the sha tag
           tags: |
-            ${{ github.repository }}:${{ github.sha }}
+            nierot/ibs3:${{ github.sha }}
